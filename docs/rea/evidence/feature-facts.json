@@ -1,0 +1,659 @@
+{
+ "note": "REA analyze-javascript-application 의미 그래프에서 파일별로 모은 것. 함수 이름이 없는 것은 익명 화살표 함수",
+ "statistics": {
+  "relevant_files": 175,
+  "nested_asar_containers": 0,
+  "text_bytes_read": 43031,
+  "invalid_utf8_files": 0,
+  "parsed_javascript_files": 12,
+  "skipped_javascript_files": 0,
+  "visited_ast_nodes": 6190,
+  "findings": 183,
+  "modules": 0,
+  "parse_failures": 0
+ },
+ "semantic_graph": {
+  "nodes": 3592,
+  "relations": 3085,
+  "fingerprints": 71,
+  "unknowns": 3200,
+  "node_kinds": {
+   "expression": 2364,
+   "call-site": 288,
+   "binding": 255,
+   "property-slot": 193,
+   "module": 171,
+   "parameter": 143,
+   "return-site": 79,
+   "function": 74,
+   "literal": 22,
+   "boundary": 3
+  },
+  "unknown_reasons": {
+   "incomplete-module": 1908,
+   "ambiguous-target": 518,
+   "unknown-value": 472,
+   "dynamic-call": 280,
+   "dynamic-property": 22
+  }
+ },
+ "files": {
+  "src/help.ts": {
+   "functions": [
+    {
+     "name": "clamp",
+     "lines": [
+      3,
+      5
+     ]
+    },
+    {
+     "name": "roundTo",
+     "lines": [
+      7,
+      14
+     ]
+    }
+   ],
+   "call_sites": 3,
+   "literals": []
+  },
+  "src/legacy/abstract_scheduler.ts": {
+   "functions": [
+    {
+     "name": "AbstractScheduler",
+     "lines": [
+      20,
+      126
+     ]
+    },
+    {
+     "name": "constructor",
+     "lines": [
+      32,
+      46
+     ]
+    },
+    {
+     "name": "checkGrade",
+     "lines": [
+      48,
+      52
+     ]
+    },
+    {
+     "name": "init",
+     "lines": [
+      54,
+      67
+     ]
+    },
+    {
+     "name": "preview",
+     "lines": [
+      70,
+      78
+     ]
+    },
+    {
+     "name": "previewIterator",
+     "lines": [
+      80,
+      84
+     ]
+    },
+    {
+     "name": "review",
+     "lines": [
+      87,
+      104
+     ]
+    },
+    {
+     "name": "buildLog",
+     "lines": [
+      112,
+      125
+     ]
+    }
+   ],
+   "call_sites": 19,
+   "literals": []
+  },
+  "src/legacy/default.ts": {
+   "functions": [
+    {
+     "name": "checkParameters",
+     "lines": [
+      33,
+      45
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      34,
+      34
+     ]
+    },
+    {
+     "name": "generatorParameters",
+     "lines": [
+      48,
+      70
+     ]
+    },
+    {
+     "name": "createEmptyCard",
+     "lines": [
+      81,
+      94
+     ]
+    }
+   ],
+   "call_sites": 11,
+   "literals": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "src/legacy/help.ts": {
+   "functions": [
+    {
+     "name": "date_scheduler",
+     "lines": [
+      16,
+      26
+     ]
+    },
+    {
+     "name": "date_diff",
+     "lines": [
+      29,
+      44
+     ]
+    },
+    {
+     "name": "formatDate",
+     "lines": [
+      47,
+      59
+     ]
+    },
+    {
+     "name": "padZero",
+     "lines": [
+      61,
+      63
+     ]
+    },
+    {
+     "name": "show_diff_message",
+     "lines": [
+      69,
+      90
+     ]
+    },
+    {
+     "name": "get_fuzz_range",
+     "lines": [
+      101,
+      112
+     ]
+    },
+    {
+     "name": "dateDiffInDays",
+     "lines": [
+      115,
+      129
+     ]
+    }
+   ],
+   "call_sites": 40,
+   "literals": [
+    24,
+    "min",
+    31,
+    "hour",
+    "day",
+    60,
+    12,
+    60,
+    "year",
+    "month",
+    "second"
+   ]
+  },
+  "src/legacy/impl/basic_scheduler.ts": {
+   "functions": [
+    {
+     "name": "BasicScheduler",
+     "lines": [
+      28,
+      276
+     ]
+    },
+    {
+     "name": "constructor",
+     "lines": [
+      33,
+      55
+     ]
+    },
+    {
+     "name": "getLearningInfo",
+     "lines": [
+      57,
+      77
+     ]
+    },
+    {
+     "name": "applyLearningSteps",
+     "lines": [
+      81,
+      125
+     ]
+    },
+    {
+     "name": "newState",
+     "lines": [
+      127,
+      140
+     ]
+    },
+    {
+     "name": "learningState",
+     "lines": [
+      142,
+      159
+     ]
+    },
+    {
+     "name": "reviewState",
+     "lines": [
+      161,
+      200
+     ]
+    },
+    {
+     "name": "next_ds",
+     "lines": [
+      205,
+      218
+     ]
+    },
+    {
+     "name": "next_interval",
+     "lines": [
+      223,
+      246
+     ]
+    },
+    {
+     "name": "scheduler_next_interval",
+     "lines": [
+      248,
+      261
+     ]
+    },
+    {
+     "name": "next_state",
+     "lines": [
+      266,
+      275
+     ]
+    }
+   ],
+   "call_sites": 51,
+   "literals": [
+    60
+   ]
+  },
+  "src/middlewares/fuzzing/core.ts": {
+   "functions": [
+    {
+     "name": "getFuzzRange",
+     "lines": [
+      17,
+      40
+     ]
+    },
+    {
+     "name": "fnv1a32",
+     "lines": [
+      42,
+      51
+     ]
+    },
+    {
+     "name": "mulberry32",
+     "lines": [
+      53,
+      63
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      56,
+      62
+     ]
+    },
+    {
+     "name": "fnv1aMulberry32Rng",
+     "lines": [
+      65,
+      66
+     ]
+    },
+    {
+     "name": "withFuzzing",
+     "lines": [
+      71,
+      88
+     ]
+    }
+   ],
+   "call_sites": 23,
+   "literals": []
+  },
+  "src/middlewares/learning-steps/core.ts": {
+   "functions": [
+    {
+     "name": "ConvertStepUnitToMinutes",
+     "lines": [
+      12,
+      49
+     ]
+    },
+    {
+     "name": "calculateLearningSteps",
+     "lines": [
+      57,
+      113
+     ]
+    }
+   ],
+   "call_sites": 17,
+   "literals": []
+  },
+  "src/middlewares/monotonic-interval/core.ts": {
+   "functions": [
+    {
+     "name": "calculateScheduleDays",
+     "lines": [
+      21,
+      51
+     ]
+    },
+    {
+     "name": "toSeconds",
+     "lines": [
+      55,
+      55
+     ]
+    },
+    {
+     "name": "calculateScheduleDay",
+     "lines": [
+      66,
+      94
+     ]
+    }
+   ],
+   "call_sites": 15,
+   "literals": [
+    86400
+   ]
+  },
+  "src/models/fsrs-6/algorithm.ts": {
+   "functions": [
+    {
+     "name": "computeDecayFactor",
+     "lines": [
+      7,
+      14
+     ]
+    },
+    {
+     "name": "forgetting_curve",
+     "lines": [
+      26,
+      33
+     ]
+    },
+    {
+     "name": "FSRS6Algorithm",
+     "lines": [
+      38,
+      230
+     ]
+    },
+    {
+     "name": "constructor",
+     "lines": [
+      45,
+      62
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      55,
+      61
+     ]
+    },
+    {
+     "name": "getDecayFactor",
+     "lines": [
+      64,
+      80
+     ]
+    },
+    {
+     "name": "init_stability",
+     "lines": [
+      82,
+      84
+     ]
+    },
+    {
+     "name": "init_difficulty",
+     "lines": [
+      86,
+      90
+     ]
+    },
+    {
+     "name": "next_interval",
+     "lines": [
+      92,
+      107
+     ]
+    },
+    {
+     "name": "linear_damping",
+     "lines": [
+      112,
+      114
+     ]
+    },
+    {
+     "name": "next_difficulty",
+     "lines": [
+      116,
+      124
+     ]
+    },
+    {
+     "name": "mean_reversion",
+     "lines": [
+      126,
+      129
+     ]
+    },
+    {
+     "name": "next_recall_stability",
+     "lines": [
+      131,
+      150
+     ]
+    },
+    {
+     "name": "next_forget_stability",
+     "lines": [
+      152,
+      165
+     ]
+    },
+    {
+     "name": "next_short_term_stability",
+     "lines": [
+      167,
+      173
+     ]
+    },
+    {
+     "name": "next_state",
+     "lines": [
+      175,
+      229
+     ]
+    }
+   ],
+   "call_sites": 57,
+   "literals": []
+  },
+  "src/models/fsrs-6/constants.ts": {
+   "functions": [
+    {
+     "name": "FSRS6ParameterBounds",
+     "lines": [
+      39,
+      64
+     ]
+    }
+   ],
+   "call_sites": 2,
+   "literals": [
+    0.1542,
+    2,
+    100
+   ]
+  },
+  "src/models/fsrs-6/model.ts": {
+   "functions": [
+    {
+     "name": "createFSRS6Model",
+     "lines": [
+      25,
+      83
+     ]
+    },
+    {
+     "name": "step",
+     "lines": [
+      34,
+      41
+     ]
+    },
+    {
+     "name": "nextInterval",
+     "lines": [
+      43,
+      48
+     ]
+    },
+    {
+     "name": "forgettingCurve",
+     "lines": [
+      50,
+      55
+     ]
+    },
+    {
+     "name": "forward",
+     "lines": [
+      57,
+      72
+     ]
+    },
+    {
+     "name": "memoryState",
+     "lines": [
+      92,
+      94
+     ]
+    },
+    {
+     "name": "create",
+     "lines": [
+      96,
+      132
+     ]
+    }
+   ],
+   "call_sites": 15,
+   "literals": []
+  },
+  "src/models/fsrs-6/parameters.ts": {
+   "functions": [
+    {
+     "name": null,
+     "lines": [
+      12,
+      15
+     ]
+    },
+    {
+     "name": "clipFSRS6Parameters",
+     "lines": [
+      18,
+      57
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      54,
+      55
+     ]
+    },
+    {
+     "name": "checkFSRS6Parameters",
+     "lines": [
+      59,
+      78
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      71,
+      71
+     ]
+    },
+    {
+     "name": "migrateFSRS6Parameters",
+     "lines": [
+      80,
+      103
+     ]
+    },
+    {
+     "name": null,
+     "lines": [
+      111,
+      130
+     ]
+    }
+   ],
+   "call_sites": 35,
+   "literals": []
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "memory-review-engine",
+  "version": "0.1.0",
+  "description": "암기 랩이 함께 쓰는 FSRS-6 간격 반복 복습 엔진(의존성 없음)과 localStorage 저장 어댑터",
+  "type": "module",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./fsrs": "./src/fsrs.js",
+    "./store": "./src/store.js"
+  },
+  "files": ["src", "dist"],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && python3 -m http.server 4321 -d dist"
+  },
+  "engines": { "node": ">=18" }
+}

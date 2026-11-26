@@ -1,0 +1,178 @@
+{
+ "seed": {
+  "kind": "module",
+  "value": "src/models/fsrs-6/algorithm.ts",
+  "match": "exact",
+  "case_sensitive": false
+ },
+ "seed_matches": 5,
+ "nodes": 424,
+ "edges": 479,
+ "node_kinds": {
+  "javascript-asset": 171,
+  "unknown": 163,
+  "javascript-module": 85,
+  "artifact": 5
+ },
+ "edge_kinds": {
+  "contains": 350,
+  "imports": 92,
+  "exposes": 37
+ },
+ "seed_adjacent_edges": [
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@/error.js"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/model.ts"
+   ],
+   "to": [
+    "javascript-asset",
+    "src/models/fsrs-6/algorithm.ts"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@/help.js"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@/help.js"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@open-spaced-repetition/srs-kit"
+   ]
+  },
+  {
+   "kind": "exposes",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts:computeDecayFactor:return-shapes"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@/help.js"
+   ]
+  },
+  {
+   "kind": "exposes",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts:FSRS6Algorithm"
+   ]
+  },
+  {
+   "kind": "contains",
+   "from": [
+    "javascript-asset",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/model.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@/error.js"
+   ]
+  },
+  {
+   "kind": "imports",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "@open-spaced-repetition/srs-kit"
+   ]
+  },
+  {
+   "kind": "contains",
+   "from": [
+    "artifact",
+    "artifact root"
+   ],
+   "to": [
+    "javascript-asset",
+    "src/models/fsrs-6/algorithm.ts"
+   ]
+  },
+  {
+   "kind": "exposes",
+   "from": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts"
+   ],
+   "to": [
+    "javascript-module",
+    "src/models/fsrs-6/algorithm.ts:forgetting_curve:return-shapes"
+   ]
+  }
+ ]
+}

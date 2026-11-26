@@ -1,0 +1,70 @@
+{
+ "tool": "rea-agents 6.8.0 (npx, 전역 설치·MCP 설정 없음)",
+ "node": "v22.23.4",
+ "target": {
+  "repo": "https://github.com/open-spaced-repetition/ts-fsrs",
+  "commit": "c64b9617e61a9603737c1b97c6355ba2c3f6af16",
+  "license": "MIT",
+  "checkout": "git clone --depth 1 (실행·pnpm install 하지 않음), 분석은 packages/fsrs 만"
+ },
+ "reference_source": {
+  "entries": 212,
+  "relationships": {
+   "external": 389,
+   "internal": 302
+  }
+ },
+ "outputs": [
+  {
+   "file": "ref-source.json",
+   "bytes": 151342,
+   "sha256": "44f516a43ebea4121772ab081087caadc0c0c64e6ac8a76eef74f178d48d47d7"
+  },
+  {
+   "file": "ref-source.summary.json",
+   "bytes": 14762,
+   "sha256": "3b31e03e5fd9637c3564e45983b183b7356ab887d6c00d8cab41003b9988e1b0"
+  },
+  {
+   "file": "app-evidence.json",
+   "bytes": 9368496,
+   "sha256": "64caf0e5712d8aa66c8e20a8ad944fbb5241ee9f0a52d6c957fad38898e788d7"
+  },
+  {
+   "file": "app-summary-view.json",
+   "bytes": 11969,
+   "sha256": "198cceaf7b8f36cdb0b2a30172c532f689597888445590b2340f4d37c639f92d"
+  },
+  {
+   "file": "app-modules-view.json",
+   "bytes": 36097,
+   "sha256": "6cb5be4c068e8de15ce8be1cf4b25ea609dcae5b7e5bbf9b726e67e257be41e8"
+  },
+  {
+   "file": "trace-feature-algorithm.json",
+   "bytes": 1688176,
+   "sha256": "2ab08dad8bca42b264469c4f08e4d1be6de7caf3a13d373068bb9b8e9d0046a5"
+  },
+  {
+   "file": "trace-semantics-next-interval-callers.json",
+   "bytes": 10600,
+   "sha256": "543eeb0c9603da77678420f78ba7af5b37f65041b87880e6000b10b58d0e40a2"
+  },
+  {
+   "file": "trace-semantics-schedule-days-callers.json",
+   "bytes": 11365,
+   "sha256": "c148e406ede8cc59fffaa63e8e66e81f7ae0b0adbe76831aa491284a80c550f1"
+  },
+  {
+   "file": "trace-semantics-learning-steps-callers.json",
+   "bytes": 10325,
+   "sha256": "e711cbfeeed8efc142e7c6a2ddb1cb2f287e6a870d0e6fc8bd7335af950aa14d"
+  },
+  {
+   "file": "trace-semantics-forgetting-curve-callers.json",
+   "bytes": 8895,
+   "sha256": "5c18fa17f43bb8c8feff0e746f1b9d0aed6579446879b1b7efcd9048d3f2e574"
+  }
+ ],
+ "note": "큰 결과(ref-source.json, app-evidence.json, trace-feature-algorithm.json)는 저장소에 넣지 않고 크기·SHA-256 만 기록. scripts/run-rea.sh 로 다시 만든다"
+}
