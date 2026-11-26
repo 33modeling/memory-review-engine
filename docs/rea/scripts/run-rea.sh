@@ -49,3 +49,6 @@ $REA trace-application-feature trace-feature-algorithm-input.json --format json 
 for n in next-interval-callers schedule-days-callers learning-steps-callers forgetting-curve-callers; do
   $REA trace-javascript-semantics "trace-semantics-$n-input.json" --format json > "trace-semantics-$n.json"
 done
+
+# 6. 저장소에 넣을 작은 증거로 정리(작업 폴더 절대 경로는 지움)
+python3 -I "$HERE/summarize.py" "$WORK/work" "$HERE/../evidence"

@@ -1,0 +1,266 @@
+{
+  "schema": "rea-analysis/v1",
+  "id": "ts-fsrs-memory-review-engine",
+  "title": "ts-fsrs → 복습 엔진",
+  "analyzed_at": "2026-11-26",
+  "app": {
+    "slug": "memory-review-engine",
+    "name": "복습 엔진(memory-review-engine)",
+    "repo": "33modeling/memory-review-engine",
+    "url": "https://github.com/33modeling/memory-review-engine"
+  },
+  "target": {
+    "name": "ts-fsrs",
+    "source_url": "https://github.com/open-spaced-repetition/ts-fsrs",
+    "commit": "c64b9617e61a9603737c1b97c6355ba2c3f6af16",
+    "license": "MIT",
+    "scope": "저장소 얕은 clone(7.4 MB) 중 packages/fsrs 만 분석. pnpm install·빌드·실행 없음"
+  },
+  "rea": {
+    "version": "6.8.0",
+    "runs": [
+      {
+        "command": "import-reference-source",
+        "target": "packages/fsrs 전체",
+        "exit": 0,
+        "seconds": null,
+        "result": "항목 212(TypeScript 171), import 관계 691(내부 302·외부 389). 원본 151 KB는 SHA-256만 기록"
+      },
+      {
+        "command": "import-reference-source",
+        "target": "packages/fsrs 요약(--detail summary --outline-depth 3)",
+        "exit": 0,
+        "seconds": null,
+        "result": "15 KB → reference-source.summary.json"
+      },
+      {
+        "command": "analyze-javascript-application",
+        "target": "스케줄링 파일 12개(selection.json)",
+        "exit": 0,
+        "seconds": null,
+        "result": "파싱 실패 0, AST 노드 6,190. 구조 그래프 424 노드·479 간선, 의미 그래프 3,592 노드·3,085 관계, 함수 지문 71, unknown 3,200. 결과 9.4 MB는 크기·SHA-256만 기록"
+      },
+      {
+        "command": "inspect-analysis-view",
+        "target": "summary 보기",
+        "exit": 0,
+        "seconds": null,
+        "result": "12 KB → app-analysis.summary-view.json"
+      },
+      {
+        "command": "inspect-analysis-view",
+        "target": "modules 참조 보기(javascript-asset 64개)",
+        "exit": 0,
+        "seconds": null,
+        "result": "36 KB → app-analysis.modules-view.json"
+      },
+      {
+        "command": "trace-application-feature",
+        "target": "모듈 models/fsrs-6/algorithm.ts 양방향",
+        "exit": 0,
+        "seconds": null,
+        "result": "시드 5, 노드 424·간선 479(contains 350·imports 92·exposes 37) → trace-feature-algorithm.summary.json"
+      },
+      {
+        "command": "trace-javascript-semantics",
+        "target": "next_interval 호출자",
+        "exit": 0,
+        "seconds": null,
+        "result": "0곳 — 다른 파일 호출(unknown dynamic-call 6)"
+      },
+      {
+        "command": "trace-javascript-semantics",
+        "target": "calculateScheduleDays 호출자",
+        "exit": 0,
+        "seconds": null,
+        "result": "0곳 — 다른 파일 호출(unknown dynamic-call 7)"
+      },
+      {
+        "command": "trace-javascript-semantics",
+        "target": "calculateLearningSteps 호출자",
+        "exit": 0,
+        "seconds": null,
+        "result": "0곳 — 다른 파일 호출(unknown dynamic-call 5)"
+      },
+      {
+        "command": "trace-javascript-semantics",
+        "target": "forgetting_curve 호출자",
+        "exit": 0,
+        "seconds": null,
+        "result": "0곳 — 같은 이름 메서드는 클래스 안 화살표 함수로 따로 있음(unknown dynamic-call 3)"
+      }
+    ]
+  },
+  "features": [
+    {
+      "name": "기억 상태(안정도·난이도)",
+      "upstream_how": "FSRS6Algorithm 이 가중치 21개로 {stability, difficulty} 를 next_state 로 갱신",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "src/fsrs.js stepMemory, DEFAULT_WEIGHTS"
+    },
+    {
+      "name": "망각 곡선·예상 유지율",
+      "upstream_how": "forgetting_curve: (1 + factor·t/S)^decay, factor = 0.9^(1/decay) - 1",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json, trace-semantics-forgetting-curve-callers.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "forgettingCurve, retrievability, stats.averageRetention·retentionIn7Days"
+    },
+    {
+      "name": "목표 유지율 간격",
+      "upstream_how": "next_interval: 망각 곡선을 t 로 풀어 반올림, 최소 1일. scheduler_next_interval 이 최대 간격·fuzz 적용",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json, trace-semantics-next-interval-callers.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "intervalFromStability, requestRetention 기본 0.9"
+    },
+    {
+      "name": "첫 평가 초깃값",
+      "upstream_how": "init_stability = w[G-1], init_difficulty = w4 - e^((G-1)w5) + 1",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": ""
+    },
+    {
+      "name": "난이도 갱신",
+      "upstream_how": "next_difficulty: ΔD = -w6(G-3), linear_damping, mean_reversion(쉬움 초깃값, w7)",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": ""
+    },
+    {
+      "name": "기억 성공·잊음 안정도",
+      "upstream_how": "next_recall_stability(어려움 w15·쉬움 w16), next_forget_stability 와 S/e^(w17·w18) 중 작은 값",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": ""
+    },
+    {
+      "name": "같은 날 복습 반영",
+      "upstream_how": "next_short_term_stability: S^-w19·e^(w17(G-3+w18)), 어려움 이상은 1 이상",
+      "evidence": "feature-facts.json(models/fsrs-6/algorithm.ts 함수 16), trace-feature-algorithm.summary.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "enableShortTerm"
+    },
+    {
+      "name": "학습·재학습 단계",
+      "upstream_how": "calculateLearningSteps: 다시=첫 단계, 어려움=두 단계 평균(하나면 1.5배), 알맞음=다음 단계, 하루 이상이면 복습",
+      "evidence": "feature-facts.json(learning-steps/core.ts, basic_scheduler.ts applyLearningSteps), trace-semantics-learning-steps-callers.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "learningSteps ['1m','10m'], relearningSteps ['10m']"
+    },
+    {
+      "name": "간격 순서 보장",
+      "upstream_how": "calculateScheduleDays: 어려움 ≤ 최대, 알맞음 ≥ 어려움+1, 쉬움 ≥ 알맞음+1",
+      "evidence": "feature-facts.json(monotonic-interval/core.ts), trace-semantics-schedule-days-callers.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": ""
+    },
+    {
+      "name": "오늘 복습할 카드",
+      "upstream_how": "(라이브러리 밖, 앱 몫)",
+      "evidence": "feature-facts.json(basic_scheduler.ts 에 목록 함수 없음)",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "dueCards: 익히는 중 → 복습(기억 낮은 순) → 새 카드(한도)"
+    },
+    {
+      "name": "통계·7일 예보",
+      "upstream_how": "(없음)",
+      "evidence": "app-analysis.modules-view.json",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "stats: 상태별 수, 오늘 남은 수, 평균 유지율, forecast"
+    },
+    {
+      "name": "localStorage 저장",
+      "upstream_how": "(없음, 앱 몫)",
+      "evidence": "app-analysis.summary-view.json(저장소 접근 없음)",
+      "status": "implemented",
+      "commits": [
+        "09f6341"
+      ],
+      "note": "src/store.js, 랩 이름별 키 memory-review:<deck>, try/catch·메모리 대체"
+    },
+    {
+      "name": "간격 흔들기(fuzz)",
+      "upstream_how": "getFuzzRange: 2.5~7일 15%·7~20일 10%·20일 이상 5%, 씨앗 난수(fnv1a+mulberry32)",
+      "evidence": "feature-facts.json(fuzzing/core.ts 함수 6)",
+      "status": "candidate",
+      "commits": [],
+      "note": "카드가 많아 같은 날 몰릴 때"
+    },
+    {
+      "name": "가중치 학습",
+      "upstream_how": "Rust 바인딩 train.rs 로 복습 기록에서 최적화",
+      "evidence": "reference-source.summary.json(packages/fsrs 밖, 분석 안 함)",
+      "status": "hold",
+      "commits": [],
+      "note": "브라우저 크기·기록 양 확인 필요"
+    },
+    {
+      "name": "되돌리기·다시 계산",
+      "upstream_how": "rollback(기록으로 이전 카드 복원), reschedule(기록 전체로 다시 계산)",
+      "evidence": "reference-source.summary.json(legacy/reschedule.ts)",
+      "status": "candidate",
+      "commits": [],
+      "note": "기록은 logs() 에 남김"
+    },
+    {
+      "name": "장기 전용 스케줄러",
+      "upstream_how": "enable_short_term false 면 LongTermScheduler(학습 단계 없음)",
+      "evidence": "reference-source.summary.json(legacy/impl/long_term_scheduler.ts)",
+      "status": "hold",
+      "commits": [],
+      "note": "enableShortTerm:false + learningSteps:[] 로 비슷하게"
+    },
+    {
+      "name": "FSRS-3~5·7 모델",
+      "upstream_how": "models/ 아래 버전별 알고리즘",
+      "evidence": "reference-source.summary.json",
+      "status": "hold",
+      "commits": [],
+      "note": "FSRS-6 만"
+    }
+  ],
+  "limitations": [
+    "의미 추적이 다른 파일에서 부른 함수를 따라가지 않음: next_interval·calculateScheduleDays·calculateLearningSteps·forgetting_curve 호출자 0(unknown dynamic-call)",
+    "@/ 별칭 import 를 소스 파일로 잇지 못함. import-reference-source 내부 관계 302개와 tsconfig 로 보완",
+    "unknown 3,200개(incomplete-module 1,908·ambiguous-target 518·unknown-value 472·dynamic-call 280·dynamic-property 22), 클래스 메서드 호출(this.model.step) 대부분",
+    "REA 는 구조·호출만 보임. 수식은 위키 공식과 소스를 직접 읽어 맞춤",
+    "명령별 시간은 재지 않음(스크립트 전체 24초)",
+    "라이브러리라 실행 관찰 없음. 기대값은 ts-fsrs·fsrs-rs 공개 테스트의 숫자"
+  ],
+  "doc": "docs/rea/ts-fsrs-analysis.md",
+  "evidence_dir": "docs/rea/evidence"
+}
